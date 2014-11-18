@@ -1,18 +1,17 @@
 from operator import attrgetter
 
-from bin import Bin
+from location import Location
 
 class Packer(object):
-    def __init__(self, bin_count, bin_size):
-        self._bin_count = bin_count
-        self._bin_size = bin_size
+    def __init__(self, location_count):
+        self._location_count = location_count
 
     def pack(self, items, fill_limit):
-        bins = []
-        other = Bin(-1)
+        locations = []
+        other = Location(-1)
 
-        for x in range(0, self._bin_count):
-            bins.append(Bin(x))
+        for x in range(0, self._location_count):
+            locations.append(Location(x))
 
         items = sorted(items, key=attrgetter('weight'), reverse=True)
         items = sorted(items, key=attrgetter('value'), reverse=True)
@@ -20,9 +19,9 @@ class Packer(object):
         for item in items:
             stored = False
 
-            bins = sorted(bins, key=attrgetter('weight'))
+            locations = sorted(locations, key=attrgetter('weight'))
 
-            for idx, location in enumerate(bins):
+            for idx, location in enumerate(locations):
                 if location.weight < fill_limit and item.weight <= (fill_limit - location.weight):
                     location.add_item(item)
                     stored = True
@@ -32,5 +31,5 @@ class Packer(object):
             if not stored:
                 other.add_item(item)
         
-        return (bins, other)
+        return (locations, other)
 

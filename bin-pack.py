@@ -6,10 +6,10 @@ def test_packer(packer_name, packer, items, fill_limit):
     print "Packer: %s" % (packer_name)
     print ""
 
-    (bins, other) = packer.pack(items, fill_limit)
+    (locations, other) = packer.pack(items, fill_limit)
 
     total_weight = sum(item.weight for item in items)
-    avg_weight = float(total_weight) / len(bins)
+    avg_weight = float(total_weight) / len(locations)
 
     def print_location(location):
         tot_weight = 0
@@ -29,11 +29,11 @@ def test_packer(packer_name, packer, items, fill_limit):
         return deviation
     
     tot_deviation = 0
-    for location in bins:
+    for location in locations:
         print "Location %d" % (location.name)
         tot_deviation += print_location(location)
 
-    print "Average Deviation: %f" % (tot_deviation / len(bins))
+    print "Average Deviation: %f" % (tot_deviation / len(locations))
     print ""
 
     print "Not stored"
@@ -42,11 +42,10 @@ def test_packer(packer_name, packer, items, fill_limit):
     print ""
 
 if __name__ == "__main__":
-    bin_count = 4
-    bin_size  = 10
+    location_count = 4
 
-    packer1 = Packer1(bin_count, bin_size)
-    packer2 = Packer2(bin_count, bin_size)
+    packer1 = Packer1(location_count)
+    packer2 = Packer2(location_count)
     
     items1 = [Item(8, 1),
             Item(6, 1),
