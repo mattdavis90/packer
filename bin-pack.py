@@ -72,17 +72,22 @@ if __name__ == "__main__":
             Item(3, 2),
             Item(2, 1)]
 
-    fill_limit = 10
+    fill_limit1 = 10
+    fill_limit2 = 8
 
     # Simple test
-    test_packer("Packer1", packer1, items1, fill_limit)
-    test_packer("Packer2", packer2, items1, fill_limit)
+    test_packer("Packer1", packer1, items1, fill_limit1)
+    test_packer("Packer2", packer2, items1, fill_limit1)
     
     # Simple test 2
-    test_packer("Packer1", packer1, items2, fill_limit)
-    test_packer("Packer2", packer2, items2, fill_limit)
+    test_packer("Packer1", packer1, items2, fill_limit1)
+    test_packer("Packer2", packer2, items2, fill_limit1)
 
     # Oversubscription test
-    test_packer("Packer1", packer1, items3, fill_limit)
-    test_packer("Packer2", packer2, items3, fill_limit)
+    test_packer("Packer1", packer1, items3, fill_limit1)
+    test_packer("Packer2", packer2, items3, fill_limit1)
+
+    # Oversubscription test 2
+    test_packer("Packer1", packer1, items3, fill_limit2)
+    test_packer("Packer2", packer2, items3, fill_limit2)
 
