@@ -15,6 +15,7 @@ class Packer(object):
             bins.append(Bin(x))
 
         items = sorted(items, key=attrgetter('weight'), reverse=True)
+        items = sorted(items, key=attrgetter('value'), reverse=True)
         
         for item in items:
             stored = False
