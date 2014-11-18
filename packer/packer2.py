@@ -16,7 +16,6 @@ class Packer(object):
 
         items = sorted(items, key=attrgetter('weight'), reverse=True)
         
-        # Search through the bins looking for space starting at the bin that was touched longest ago
         for item in items:
             stored = False
 
