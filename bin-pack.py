@@ -54,8 +54,19 @@ if __name__ == "__main__":
             Item(4, 1),
             Item(2, 1)]
 
+    items2 = [Item(2, 1),
+            Item(2, 1),
+            Item(3, 1),
+            Item(4, 1),
+            Item(5, 1),
+            Item(6, 1),
+            Item(8, 1),
+            Item(1, 1)]
+
     fill_limit = 10
 
     test_packer("Packer1", packer1, items1, fill_limit)
     test_packer("Packer2", packer2, items1, fill_limit)
+    test_packer("Packer1", packer1, items2, fill_limit)
+    test_packer("Packer2", packer2, items2, fill_limit)
 
