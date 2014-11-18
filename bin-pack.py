@@ -3,20 +3,19 @@
 from packer import *
 
 def get_packer(bin_count, bin_size):
-    return Packer1(bin_count, bin_size)
+    return Packer2(bin_count, bin_size)
 
 if __name__ == "__main__":
-    bin_count = 2
+    bin_count = 4
     bin_size  = 10
 
     packer = get_packer(bin_count, bin_size)
     
-    items = [Item(6, 2),
-            Item(2, 4),
-            Item(8, 1),
-            Item(3, 5),
-            Item(4, 3),
-            Item(1, 6)]
+    items = [Item(8, 1),
+            Item(6, 1),
+            Item(6, 1),
+            Item(4, 1),
+            Item(2, 1)]
 
     fill_limit = 10
 
@@ -35,8 +34,8 @@ if __name__ == "__main__":
         print "Total Weight: %d, Total Value: %d" % (tot_weight, tot_value)
         print ""
 
-    for idx, location in enumerate(bins):
-        print "Location %d" % (idx)
+    for location in bins:
+        print "Location %d" % (location.name)
         print_location(location)
 
     print "Not stored"

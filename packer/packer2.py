@@ -14,20 +14,11 @@ class Packer(object):
         for x in range(0, self._bin_count):
             bins.append(Bin(x))
 
-        items = sorted(items, key=attrgetter('value'))
+        items = sorted(items, key=attrgetter('weight'), reverse=True)
         
         for item in items:
-            stored = False
-
-            for location in bins:
-                if location.weight < fill_limit and item.weight <= (fill_limit - location.weight):
-                    location.add_item(item)
-                    stored = True
-
-                    break
-
-            if not stored:
-                other.add_item(item)
-
+            # Search through the bins looking for space starting at the bin that was touched longest ago
+            bins.append(bins.pop(0)) # Moves the touched bin to the end of the list
+        
         return (bins, other)
 

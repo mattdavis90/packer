@@ -1,5 +1,6 @@
 class Bin(object):
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self.weight = 0
         self.value = 0
         self.items = []
