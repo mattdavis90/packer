@@ -63,10 +63,26 @@ if __name__ == "__main__":
             Item(8, 1),
             Item(1, 1)]
 
+    items3 = [Item(8, 1),
+            Item(8, 1),
+            Item(10, 1),
+            Item(4, 1),
+            Item(6, 1),
+            Item(2, 1),
+            Item(3, 2),
+            Item(2, 1)]
+
     fill_limit = 10
 
+    # Simple test
     test_packer("Packer1", packer1, items1, fill_limit)
     test_packer("Packer2", packer2, items1, fill_limit)
+    
+    # Simple test 2
     test_packer("Packer1", packer1, items2, fill_limit)
     test_packer("Packer2", packer2, items2, fill_limit)
+
+    # Oversubscription test
+    test_packer("Packer1", packer1, items3, fill_limit)
+    test_packer("Packer2", packer2, items3, fill_limit)
 
