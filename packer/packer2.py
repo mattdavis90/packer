@@ -20,10 +20,11 @@ class Packer(object):
         for item in items:
             stored = False
 
+            bins = sorted(bins, key=attrgetter('weight'))
+
             for idx, location in enumerate(bins):
                 if location.weight < fill_limit and item.weight <= (fill_limit - location.weight):
                     location.add_item(item)
-                    bins.append(bins.pop(idx)) # Moves the touched bin to the end of the list
                     stored = True
 
                     break
